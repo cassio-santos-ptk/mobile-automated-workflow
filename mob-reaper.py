@@ -39,4 +39,4 @@ def execute_command(command):
         print("Error Output:", e.stderr)
 
 # Example: Execute a simple command
-execute_command(["ls"])  # Replace with your desired command
+execute_command(["whoami"])  # Replace with your desired command
