@@ -1,27 +1,42 @@
 import subprocess
 import platform
 
-def ping(host):
-    # Determine the parameter for the operating system
-    param = '-n' if platform.system().lower() == 'windows' else '-c'
+# def ping(host):
+#     # Determine the parameter for the operating system
+#     param = '-n' if platform.system().lower() == 'windows' else '-c'
     
-    # Build the ping command
-    command = ['ping', param, '4', host]  # Ping 4 packets (you can adjust this)
+#     # Build the ping command
+#     command = ['ping', param, '4', host]  # Ping 4 packets (you can adjust this)
     
+#     try:
+#         # Run the command
+#         subprocess.run(command, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+#         print(f"Success: {host} is reachable.")
+#     except subprocess.CalledProcessError:
+#         print(f"Error: {host} is not reachable.")
+
+# # Example usage: ping a machine by IP or hostname
+# host_to_ping = '192.168.1.1'  # Replace with your target IP or hostname
+# ping(host_to_ping)
+
+
+def execute_command(command):
     try:
-        # Run the command
-        subprocess.run(command, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        print(f"Success: {host} is reachable.")
-    except subprocess.CalledProcessError:
-        print(f"Error: {host} is not reachable.")
+        # Run the command and capture the output
+        result = subprocess.run(command, capture_output=True, text=True, check=True)
+        
+        # Print the command output
+        print("Command Output:")
+        print(result.stdout)
+        
+        # Print any error messages
+        if result.stderr:
+            print("Error Output:")
+            print(result.stderr)
+            
+    except subprocess.CalledProcessError as e:
+        print(f"Error executing command: {e}")
+        print("Error Output:", e.stderr)
 
-# Example usage: ping a machine by IP or hostname
-host_1 = '192.168.0.102'  # Replace with your target IP or hostname
-host_2 = '10.51.16.172'  # Replace with your target IP or hostname
-host_3 = '169.254.22.125'  # Replace with your target IP or hostname
-host_4 = '192.168.1.1'  # Replace with your target IP or hostname
-
-ping(host_1)
-ping(host_2)
-ping(host_3)
-ping(host_4)
+# Example: Execute a simple command
+execute_command(["adb", "shell"])  # Replace with your desired command
