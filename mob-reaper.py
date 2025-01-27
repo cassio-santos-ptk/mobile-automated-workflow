@@ -36,3 +36,4 @@ def open_app():
     oppened_app = execute_command(["adb", "shell", "monkey", f"{PACKAGE_NAME}", "-c", "android.intent.category.LAUNCHER", "1"])
     
 
+open_app()
