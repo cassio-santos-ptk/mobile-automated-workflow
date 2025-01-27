@@ -39,4 +39,4 @@ def execute_command(command):
         print("Error Output:", e.stderr)
 
 # Example: Execute a simple command
-execute_command(["whoami"])  # Replace with your desired command
+execute_command(["ping", "-c", "1", "127.0.0.1"])  # Replace with your desired command
