@@ -39,7 +39,7 @@ def has_device(devices):
     dvc = "device"
 
     matches = re.findall(dvc, devices)
-    print(matches)
+    print(len(matches))
 
     return len(matches) > 0
 

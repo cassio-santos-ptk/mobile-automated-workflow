@@ -12,9 +12,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
-        env:
-          PACKAGE_NAME: ${{env.PACKAGE_NAME}}
+        uses: actions/checkout@v2        
 
       - name: Set up Python
         uses: actions/setup-python@v2
@@ -28,3 +26,5 @@ jobs:
 
       - name: Run tests
         run: python mob-reaper.py  # Run the Python script
+        env:
+          PACKAGE_NAME: ${{vars.PACKAGE_NAME}}
