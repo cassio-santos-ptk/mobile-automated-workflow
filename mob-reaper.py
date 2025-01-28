@@ -15,12 +15,9 @@ def execute_command(command):
         # Print the command output
         print("* Output *")
         print(result.stdout)   
-
-        print("code")
-        print(result.returncode)     
         
-        # Print any error messages
-        if result.stderr:
+        # Print error messages if have it
+        if(result.code != 0 and result.stderr):            
             if(DAEMON in result.stderr and retry <1):
                 retry +=1
                 print(result.stderr)
