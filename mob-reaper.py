@@ -1,8 +1,11 @@
 import subprocess
 import sys
 import os
+import re
 
 PACKAGE_NAME = os.getenv("PACKAGE_NAME")
+DAEMON = "daemon not running"
+retry  = 0
 
 def execute_command(command):
     try:
@@ -15,6 +18,13 @@ def execute_command(command):
         
         # Print any error messages
         if result.stderr:
+
+            if(DAEMON in result.stderr and retry <1):
+                retry +=1
+                print(result.stderr)
+                print("Retrying ..")
+                execute_command(command)                
+
             print("Error Output:")
             print(result.stderr)
             sys.exit()
@@ -25,11 +35,18 @@ def execute_command(command):
         print(f"Error executing command: {e}")
         print("Error Output:", e.stderr)
 
+def has_device(devices):
+    dvc = "device"
+
+    matches = re.findall(dvc, devices)
+    print(matches)
+
+    return len(matches) > 0
 
 def open_app():
     # Example: Execute a simple command
     devices = execute_command(["adb", "devices"])  # Replace with your desired command
-    if devices is None:
+    if not has_device(devices):
         print("[-] Mobile Device not connected")
         sys.exit()
 
