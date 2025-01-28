@@ -14,7 +14,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
         env:
-          PACKAGE_NAME: ${{vars.PACKAGE_NAME}}
+          PACKAGE_NAME: ${{env.PACKAGE_NAME}}
 
       - name: Set up Python
         uses: actions/setup-python@v2
