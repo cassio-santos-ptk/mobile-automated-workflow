@@ -14,11 +14,13 @@ def execute_command(command):
         
         # Print the command output
         print("* Output *")
-        print(result.stdout)        
+        print(result.stdout)   
+
+        print("code")
+        print(result.returncode)     
         
         # Print any error messages
         if result.stderr:
-
             if(DAEMON in result.stderr and retry <1):
                 retry +=1
                 print(result.stderr)
@@ -37,11 +39,9 @@ def execute_command(command):
 
 def has_device(devices):
     dvc = "device"
-
     matches = re.findall(dvc, devices)
-    print(len(matches))
-
-    return len(matches) > 0
+    
+    return len(matches) > 1
 
 def open_app():
     # Example: Execute a simple command
