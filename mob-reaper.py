@@ -45,7 +45,7 @@ def do_login():
     do_tap(394, 613)
 
 def do_sleep():
-    time.sleep(5)
+    time.sleep(9)
 
 def do_tap(x, y):    
     execute_command(["adb", "shell", "input", "tap", f"{x}", f"{y}"])
