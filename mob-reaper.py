@@ -49,7 +49,7 @@ def open_app():
 
     print(f"[+] Initiating tests on: {PACKAGE_NAME}")
     
-    #oppened_app = execute_command(["adb", "shell", "monkey", "-p", f"{PACKAGE_NAME}", "-c", "android.intent.category.LAUNCHER", "1"])
+    oppened_app = execute_command(["adb", "shell", "monkey", "-p", f"{PACKAGE_NAME}", "-c", "android.intent.category.LAUNCHER", "1"])
     
 
 open_app()
