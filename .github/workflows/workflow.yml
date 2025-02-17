@@ -1,4 +1,4 @@
-name: Python Hello World
+name: Mob Reaper 0.1
 
 on:
   push:
@@ -27,4 +27,4 @@ jobs:
       - name: Run tests
         run: python mob-reaper.py  # Run the Python script
         env:
-          PACKAGE_NAME: ${{vars.PACKAGE_NAME}}
+          PACKAGE_NAME: ${{env.PACKAGE_NAME}}

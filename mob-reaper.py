@@ -44,13 +44,12 @@ def open_app():
     # Example: Execute a simple command
     devices = execute_command(["adb", "devices"])  # Replace with your desired command
     if not has_device(devices):
-        print("[-] Mobile Device not connected")
+        print("[-] Mobile Device is not connected")
         sys.exit()
 
-    print("PN")
-    print(PACKAGE_NAME)
+    print("[+] Initiating tests on: {PACKAGE_NAME}")
     
-    oppened_app = execute_command(["adb", "shell", "monkey", "-p", f"{PACKAGE_NAME}", "-c", "android.intent.category.LAUNCHER", "1"])
+    #oppened_app = execute_command(["adb", "shell", "monkey", "-p", f"{PACKAGE_NAME}", "-c", "android.intent.category.LAUNCHER", "1"])
     
 
 open_app()
