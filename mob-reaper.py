@@ -47,7 +47,7 @@ def open_app():
         print("[-] Mobile Device is not connected")
         sys.exit()
 
-    print("[+] Initiating tests on: {PACKAGE_NAME}")
+    print(f"[+] Initiating tests on: {PACKAGE_NAME}")
     
     #oppened_app = execute_command(["adb", "shell", "monkey", "-p", f"{PACKAGE_NAME}", "-c", "android.intent.category.LAUNCHER", "1"])
     
