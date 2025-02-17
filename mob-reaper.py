@@ -2,6 +2,7 @@ import subprocess
 import sys
 import os
 import re
+import time
 
 PACKAGE_NAME = os.getenv("PACKAGE_NAME")
 DAEMON = "daemon not running"
@@ -40,6 +41,16 @@ def has_device(devices):
     
     return len(matches) > 1
 
+def do_login():
+    do_tap(394, 613)
+
+def do_sleep():
+    time.sleep(5)
+
+def do_tap(x, y):    
+    execute_command(["adb", "shell", "input", "tap", f"{x}", f"{y}"])
+
+
 def open_app():
     # Example: Execute a simple command
     devices = execute_command(["adb", "devices"])  # Replace with your desired command
@@ -49,7 +60,13 @@ def open_app():
 
     print(f"[+] Initiating tests on: {PACKAGE_NAME}")
     
-    oppened_app = execute_command(["adb", "shell", "monkey", "-p", f"{PACKAGE_NAME}", "-c", "android.intent.category.LAUNCHER", "1"])
+    #open the app
+    execute_command(["adb", "shell", "monkey", "-p", f"{PACKAGE_NAME}", "-c", "android.intent.category.LAUNCHER", "1"])
+
+    #wait initiate
+    do_sleep()
+
+    do_login()
     
 
 open_app()
