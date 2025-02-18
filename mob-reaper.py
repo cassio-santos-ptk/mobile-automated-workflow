@@ -56,7 +56,7 @@ def do_login():
     # digitar pass
     do_input_text(mock_data['password'])
     # tap save
-    do_tap(389, 704)
+    do_tap(391, 703)
 
 def do_input_text(data):        
     execute_command(["adb", "shell", "input", "text", f"{data}"])
