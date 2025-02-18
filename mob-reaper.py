@@ -8,6 +8,11 @@ PACKAGE_NAME = os.getenv("PACKAGE_NAME")
 DAEMON = "daemon not running"
 retry  = 0
 
+mock_data = {
+    "username":"user",
+    "password":"password123"
+}
+
 def execute_command(command):
     try:
         # Run the command and capture the output
@@ -42,18 +47,29 @@ def has_device(devices):
     return len(matches) > 1
 
 def do_login():
-    do_tap(394, 613)
+    do_tap(395, 809)
+    do_tap(382, 509)
+    # digitar user
+    do_input_text(mock_data.username)
+    # tap pass
+    # digitar pass
+    # tap save
 
-def do_sleep():
-    time.sleep(9)
+def do_input_text(data):        
+    execute_command(["adb", "shell", "input", "text", f"{data}"])
+
+
+def do_sleep(amount):
+    time.sleep(amount)
 
 def do_tap(x, y):    
     execute_command(["adb", "shell", "input", "tap", f"{x}", f"{y}"])
+    do_sleep(4)
 
 
 def open_app():
-    # Example: Execute a simple command
-    devices = execute_command(["adb", "devices"])  # Replace with your desired command
+    #check the devices connected by adb
+    devices = execute_command(["adb", "devices"])  
     if not has_device(devices):
         print("[-] Mobile Device is not connected")
         sys.exit()
@@ -64,7 +80,7 @@ def open_app():
     execute_command(["adb", "shell", "monkey", "-p", f"{PACKAGE_NAME}", "-c", "android.intent.category.LAUNCHER", "1"])
 
     #wait initiate
-    do_sleep()
+    do_sleep(9)
 
     do_login()
     
