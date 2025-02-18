@@ -50,7 +50,7 @@ def do_login():
     do_tap(395, 809)
     do_tap(382, 509)
     # digitar user
-    do_input_text(mock_data.username)
+    do_input_text(mock_data['username'])
     # tap pass
     # digitar pass
     # tap save
