@@ -25,6 +25,6 @@ jobs:
       #     pip install -r requirements.txt || echo "No requirements.txt found"  # Install dependencies (if any)
 
       - name: Run tests
-        run: python mob-reaper.py  # Run the Python script
+        run: python mob_reaper.py  # Run the Python script
         env:
           PACKAGE_NAME: ${{vars.PACKAGE_NAME}}
