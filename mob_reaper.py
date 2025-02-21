@@ -25,9 +25,9 @@ def open_app():
     check_device()
 
     #@todo add an env file with all the known apps and relate them with the folder, providing more abstraction
-
-    print(f"[+] Initiating tests on: {PACKAGE_NAME}")
+    
     log_splash()
+    print(f"[+] Initiating tests on: {PACKAGE_NAME}")
     
     #open the app
     do_open(PACKAGE_NAME)    
