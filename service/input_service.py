@@ -41,3 +41,11 @@ def do_input_text(data):
 
 def do_sleep(amount):
     time.sleep(amount)
+
+def do_restart(package):
+    execute_command(["adb", "shell", "am", "force-stop", f"{package}"])
+    do_open(package)
+
+def do_open(package):
+    execute_command(["adb", "shell", "monkey", "-p", f"{package}", "-c", "android.intent.category.LAUNCHER", "1"])
+    do_sleep(9)

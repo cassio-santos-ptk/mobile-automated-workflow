@@ -5,11 +5,26 @@ mock_data = {
     "password":"password123"
 }
 
-def login_data_storage_1():
+def login_shared_pref_1():
     #select data storage
     do_tap(395, 809)
     #select fisrt option
     do_tap(382, 509)
+    # type user
+    do_input_text(mock_data['username'])
+    # tap pass
+    do_tap(372, 601)
+    # type pass
+    do_input_text(mock_data['password'])
+    # tap save
+    do_tap(391, 703)
+
+
+def login_sqlite():
+    #select data storage
+    do_tap(395, 809)
+    #select sqlite
+    do_tap(377, 715)
     # type user
     do_input_text(mock_data['username'])
     # tap pass

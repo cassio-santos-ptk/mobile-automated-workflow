@@ -1,7 +1,7 @@
 import sys
 import os
 import re
-from service.input_service import execute_command, do_sleep
+from service.input_service import execute_command, do_restart, do_open
 from apps.andro_goat import mapping as androgoat_app
 
 PACKAGE_NAME = os.getenv("PACKAGE_NAME")
@@ -24,15 +24,19 @@ def open_app():
 
     check_device()
 
+    #@todo add an env file with all the known apps and relate them with the folder, providing more abstraction
+
     print(f"[+] Initiating tests on: {PACKAGE_NAME}")
     
     #open the app
-    execute_command(["adb", "shell", "monkey", "-p", f"{PACKAGE_NAME}", "-c", "android.intent.category.LAUNCHER", "1"])
+    do_open(PACKAGE_NAME)    
 
-    #wait initiate
-    do_sleep(9)
+    androgoat_app.login_shared_pref_1()
 
-    androgoat_app.login_data_storage_1()
+    do_restart(PACKAGE_NAME)
+
+    androgoat_app.login_sqlite()
+
 
 def main():
     open_app()
