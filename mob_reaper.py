@@ -10,7 +10,6 @@ retry  = 0
 def has_device(devices):
     dvc = "device"
     matches = re.findall(dvc, devices)
-    
     return len(matches) > 1
 
 def check_device():    
@@ -31,15 +30,32 @@ def open_app():
     #open the app
     do_open(PACKAGE_NAME)    
 
+    #@todo add an validation that checks that the app is still running on an root environment and did not displayed
+    #anything about on the screen
+
+    #@todo add an validation that checks that the app is still running on an emulator environment and did not displayed
+    #anything about on the screen
+
     androgoat_app.login_shared_pref_1()
 
     do_restart(PACKAGE_NAME)
 
     androgoat_app.login_sqlite()
 
+    do_restart(PACKAGE_NAME)
+
+    androgoat_app.login_insecure_logging()
+
+    #@todo check the logs with logcat and verify if the credentials is outputed
+
+    #@todo check the apk signature
+
+    #@todo check the min sdk
+
+    #@todo look to manifest common issues
+
 
 def main():
     open_app()
     
-
 main()
