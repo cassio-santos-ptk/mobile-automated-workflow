@@ -8,10 +8,7 @@ DAEMON = "daemon not running"
 def execute_command(command):
     try:
         # Run the command and capture the output
-        result = subprocess.run(command, capture_output=True, text=True, check=True)
-        
-        # Print the command output
-        do_log_output(result.stdout)         
+        result = subprocess.run(command, capture_output=True, text=True, check=True)                       
         
         # Print error messages if have it
         if(result.returncode != 0 and result.stderr):            
