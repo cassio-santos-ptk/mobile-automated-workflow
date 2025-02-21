@@ -4,6 +4,8 @@ import re
 from service.input_service import execute_command, do_restart, do_open
 from apps.andro_goat import mapping as androgoat_app
 from service.log_service import log_splash
+from service import vulnerability_service as vuln_service
+from config import shared
 
 PACKAGE_NAME = os.getenv("PACKAGE_NAME")
 retry  = 0
@@ -47,6 +49,9 @@ def open_app():
     do_restart(PACKAGE_NAME)
 
     androgoat_app.login_insecure_logging()
+
+    vuln_service.search_sensitive_log(shared.mock_data['username'])
+    vuln_service.search_sensitive_log(shared.mock_data['password'])
 
     #@todo check the logs with logcat and verify if the credentials is outputed
 
