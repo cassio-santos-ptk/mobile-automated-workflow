@@ -3,6 +3,7 @@ import os
 import re
 from service.input_service import execute_command, do_restart, do_open
 from apps.andro_goat import mapping as androgoat_app
+from service.log_service import log_splash
 
 PACKAGE_NAME = os.getenv("PACKAGE_NAME")
 retry  = 0
@@ -26,6 +27,7 @@ def open_app():
     #@todo add an env file with all the known apps and relate them with the folder, providing more abstraction
 
     print(f"[+] Initiating tests on: {PACKAGE_NAME}")
+    log_splash()
     
     #open the app
     do_open(PACKAGE_NAME)    
