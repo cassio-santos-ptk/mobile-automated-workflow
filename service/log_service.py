@@ -20,6 +20,3 @@ def do_log_output(data):
 
 def log_splash():
     print(splash_name)
-
-def log_warn(data):
-    print(data)

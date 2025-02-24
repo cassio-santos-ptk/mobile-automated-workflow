@@ -7,6 +7,12 @@ from service.log_service import log_splash
 from service import vulnerability_service as vuln_service
 from config import shared
 
+from dotenv import load_dotenv
+import os
+
+# Load the .env file
+load_dotenv()
+
 PACKAGE_NAME = os.getenv("PACKAGE_NAME")
 retry  = 0
 
