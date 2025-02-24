@@ -26,7 +26,7 @@ def open_app():
 
     check_device()
 
-    #@todo add an env file with all the known apps and relate them with the folder, providing more abstraction
+    #@todo 0 add an env file with all the known apps and relate them with the folder, providing more abstraction
     
     log_splash()
     print(f"[+] Initiating tests on: {PACKAGE_NAME}")
