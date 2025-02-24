@@ -22,4 +22,4 @@ def log_splash():
     print(splash_name)
 
 def log_warn(data):
-    print(Fore.RED + data)
+    print(data)
