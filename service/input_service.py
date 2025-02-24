@@ -6,23 +6,16 @@ import sys
 DAEMON = "daemon not running"
 
 def execute_command(command):
-    try:
-        # Run the command and capture the output
-        result = subprocess.run(command, capture_output=True, text=True, check=True)                       
-        
-        # Print error messages if have it
-        if(result.returncode != 0 and result.stderr):            
-            if(DAEMON in result.stderr and retry <1):
-                retry +=1
-                print(result.stderr)
-                print("Retrying ..")
-                execute_command(command)                
+    try:                 
+        process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE ,stderr=subprocess.PIPE, text=True)             
 
-            print("Error Output:")
-            print(result.stderr)
-            sys.exit()
+        output, error = process.communicate()
 
-        return result.stdout
+        #@todo handle error
+        if error:
+            print(f"[-] Error while executing command {command}")
+                      
+        return output
             
     except subprocess.CalledProcessError as e:
         print(f"Error executing command: {e}")
@@ -30,19 +23,19 @@ def execute_command(command):
 
 
 def do_tap(x, y):    
-    execute_command(["adb", "shell", "input", "tap", f"{x}", f"{y}"])
+    execute_command(f"adb shell input tap {x} {y}")
     do_sleep(4)
 
 def do_input_text(data):        
-    execute_command(["adb", "shell", "input", "text", f"{data}"])
+    execute_command(f"adb shell input text {data}")
 
 def do_sleep(amount):
     time.sleep(amount)
 
 def do_restart(package):
-    execute_command(["adb", "shell", "am", "force-stop", f"{package}"])
+    execute_command(f"adb shell am force-stop {package}")
     do_open(package)
 
 def do_open(package):
-    execute_command(["adb", "shell", "monkey", "-p", f"{package}", "-c", "android.intent.category.LAUNCHER", "1"])
+    execute_command(f"adb shell monkey -p {package} -c android.intent.category.LAUNCHER 1")
     do_sleep(9)

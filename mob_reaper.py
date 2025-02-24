@@ -17,7 +17,7 @@ def has_device(devices):
 
 def check_device():    
     #check the devices connected by adb
-    devices = execute_command(["adb", "devices"])  
+    devices = execute_command("adb devices")  
     if not has_device(devices):
         print("[-] Mobile Device is not connected")
         sys.exit()    
