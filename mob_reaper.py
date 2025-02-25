@@ -59,7 +59,11 @@ def open_app():
     vuln_service.search_sensitive_log(shared.mock_data['username'])
     vuln_service.search_sensitive_log(shared.mock_data['password'])
 
-    vuln_service.get_vulnerabilities()
+    vulns = vuln_service.get_vulnerabilities()
+
+    for v in vulns:
+        print("vulnerabilities")
+        print(v)        
 
     #@todo check the logs with logcat and verify if the credentials is outputed
 
