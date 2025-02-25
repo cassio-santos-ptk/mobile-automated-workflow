@@ -43,7 +43,7 @@ def open_app():
     #@todo add an validation that checks that the app is still running on an root environment and did not displayed
     #anything about on the screen
 
-    vuln_service.check_root()
+    vuln_service.check_root(PACKAGE_NAME)
 
     #@todo add an validation that checks that the app is still running on an emulator environment and did not displayed
     #anything about on the screen
