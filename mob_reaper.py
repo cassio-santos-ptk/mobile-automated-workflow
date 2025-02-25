@@ -43,6 +43,8 @@ def open_app():
     #@todo add an validation that checks that the app is still running on an root environment and did not displayed
     #anything about on the screen
 
+    vuln_service.check_root()
+
     #@todo add an validation that checks that the app is still running on an emulator environment and did not displayed
     #anything about on the screen
 
@@ -56,15 +58,11 @@ def open_app():
 
     androgoat_app.login_insecure_logging()
 
+    #search for sensitive logfed information - user
     vuln_service.search_sensitive_log(shared.mock_data['username'])
+    #search for sensitive logfed information - password
     vuln_service.search_sensitive_log(shared.mock_data['password'])
-
-    vulns = vuln_service.get_vulnerabilities()
-
-    for v in vulns:
-        print("vulnerabilities")
-        print(v)        
-
+      
     #@todo check the logs with logcat and verify if the credentials is outputed
 
     #@todo check the apk signature
