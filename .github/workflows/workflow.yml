@@ -10,6 +10,10 @@ jobs:
   run_python_script:
     runs-on: self-hosted
 
+    permissions:
+      contents: read
+      security-events: write
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2        
