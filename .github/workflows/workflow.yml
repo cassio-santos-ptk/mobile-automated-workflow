@@ -6,6 +6,10 @@ on:
       - main  # Trigger on push to the main branch
   workflow_dispatch:  # Allows manual trigger
 
+permissions:
+  actions: read
+  security-events: write
+
 jobs:
   run_python_script:
     runs-on: self-hosted
