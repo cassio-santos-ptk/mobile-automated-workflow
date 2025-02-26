@@ -32,11 +32,7 @@
               }
             }
           ],
-          "level": "warning",
-          "fileLocation": {
-            "uri": "src/app.js",
-            "uriBaseId": "DEFAULT"
-          }
+          "level": "warning"         
         },
         {
           "ruleId": "no-console",
@@ -59,11 +55,7 @@
               }
             }
           ],
-          "level": "error",
-          "fileLocation": {
-            "uri": "src/app.js",
-            "uriBaseId": "DEFAULT"
-          }
+          "level": "error"         
         }
       ]
     }
