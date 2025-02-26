@@ -38,12 +38,13 @@ def open_app():
     print(f"[+] Initiating tests on: {PACKAGE_NAME}")
     
     #open the app
-    do_open(PACKAGE_NAME)    
+    do_open(PACKAGE_NAME)        
 
-    #@todo add an validation that checks that the app is still running on an root environment and did not displayed
-    #anything about on the screen
-
+    #check for root detection
     vuln_service.check_root(PACKAGE_NAME)
+
+    #check for emulator detection
+    vuln_service.check_emulator(PACKAGE_NAME)
 
     #@todo add an validation that checks that the app is still running on an emulator environment and did not displayed
     #anything about on the screen
