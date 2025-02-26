@@ -46,14 +46,15 @@ def open_app():
     #check for emulator detection
     vuln_service.check_emulator(PACKAGE_NAME)
 
-    #@todo add an validation that checks that the app is still running on an emulator environment and did not displayed
-    #anything about on the screen
-
     androgoat_app.login_shared_pref_1()
+
+    #@todo check if sensitive data are stored on shared pref
 
     do_restart(PACKAGE_NAME)
 
     androgoat_app.login_sqlite()
+
+    #@todo check if sensitive data are stored on sqlite
 
     do_restart(PACKAGE_NAME)
 
@@ -61,17 +62,15 @@ def open_app():
 
     #search for sensitive logfed information - user
     vuln_service.search_sensitive_log(shared.mock_data['username'])
+
     #search for sensitive logfed information - password
-    vuln_service.search_sensitive_log(shared.mock_data['password'])
-      
-    #@todo check the logs with logcat and verify if the credentials is outputed
+    vuln_service.search_sensitive_log(shared.mock_data['password']) 
 
     #@todo check the apk signature
 
     #@todo check the min sdk
 
     #@todo look to manifest common issues
-
 
 def main():
     open_app()
