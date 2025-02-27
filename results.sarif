@@ -32,7 +32,7 @@
       },
       "results": [
         {
-          "ruleId": "js/missing-origin-check",
+          "ruleId": "mobile/missing-root-detection",
           "message": {
             "text": "This message event handler does not check 'event.origin'."
           },
