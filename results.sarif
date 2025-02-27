@@ -33,7 +33,17 @@
           "message": {
             "text": "This message event handler does not check 'event.origin'."
           },
-          "level":"error"         
+          "level":"error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "app.apk",
+                  "uriBaseId": "SRCROOT"
+                }               
+              }
+            }
+          ]         
         }
       ]
     }
