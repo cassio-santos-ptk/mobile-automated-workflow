@@ -8,8 +8,7 @@
           "version": "2.14.1",
           "informationUri": "https://codeql.github.com",
           "rules": [
-            {
-              "id": "js/missing-origin-check",
+            {              
               "name": "Missing Origin Check in Message Event",
               "shortDescription": {
                 "text": "The message event handler does not check 'event.origin'."
@@ -17,7 +16,11 @@
               "fullDescription": {
                 "text": "When handling messages using window.addEventListener('message'), it's crucial to check event.origin to prevent processing messages from untrusted sources."
               },
-              "helpUri": "https://codeql.github.com/codeql-query-help/javascript/js-missing-origin-check/",
+              "help": {
+                "text": "### Recommendation\nTo prevent unauthorized messages from being processed, always validate `event.origin` before handling `postMessage` events.\n\n### Example (Vulnerable Code)\n```javascript\nwindow.addEventListener(\"message\", function(event) {\n    if (event.data.action === \"doSomething\") {\n        process(event.data.payload);\n    }\n});\n```\n\n### Fixed Code\n```javascript\nwindow.addEventListener(\"message\", function(event) {\n    if (event.origin !== \"https://trusted.example.com\") {\n        return; // Ignore messages from untrusted sources\n    }\n    process(event.data.payload);\n});\n```\n\n### References\n- [MDN: window.postMessage()](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage)\n- [OWASP: Insecure Communication](https://owasp.org/www-project-top-ten/)\n",
+                "markdown": true
+              },              
+              "helpUri": "https://owasp.org/www-project-mobile-top-10/2023-risks/m5-insecure-communication.html",
               "properties": {
                 "security-severity": "7.5",
                 "precision": "high",
