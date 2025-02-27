@@ -16,6 +16,7 @@ load_dotenv()
 PACKAGE_NAME = os.getenv("PACKAGE_NAME")
 retry  = 0
 
+
 def has_device(devices):
     dvc = "device"
     matches = re.findall(dvc, devices)
@@ -73,6 +74,7 @@ def open_app():
     #@todo look to manifest common issues
 
 def main():
-    open_app()
+    #open_app()
+    print("skipin this for a while ..")
     
 main()
