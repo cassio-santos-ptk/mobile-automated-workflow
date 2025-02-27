@@ -33,7 +33,7 @@
           "message": {
             "text": "This message event handler does not check 'event.origin'."
           },
-          "severity": "error"
+          "level":"error"         
         }
       ]
     }
