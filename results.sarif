@@ -4,37 +4,35 @@
     {
       "tool": {
         "driver": {
-          "name": "CodeQL",
+          "name": "MobReaper - Custom Security Scanner",
           "version": "2.14.1",
           "informationUri": "https://codeql.github.com",
           "rules": [
             {
-              "id": "mobile/missing-root-detection",
+              "id": "android/missing-root-detection",
               "name": "Missing Origin Check in Message Event",
               "shortDescription": {
                 "text": "The message event handler does not check 'event.origin'."
-              },
-              "fullDescription": {
-                "text": "When handling messages using window.addEventListener('message'), it's crucial to check event.origin to prevent processing messages from untrusted sources."
-              },
-              "help": {
-                "text": "### Recommendation\nTo prevent unauthorized messages from being processed, always validate `event.origin` before handling `postMessage` events.\n\n### Example (Vulnerable Code)\n```javascript\nwindow.addEventListener(\"message\", function(event) {\n    if (event.data.action === \"doSomething\") {\n        process(event.data.payload);\n    }\n});\n```\n\n### Fixed Code\n```javascript\nwindow.addEventListener(\"message\", function(event) {\n    if (event.origin !== \"https://trusted.example.com\") {\n        return; // Ignore messages from untrusted sources\n    }\n    process(event.data.payload);\n});\n```\n\n### References\n- [MDN: window.postMessage()](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage)\n- [OWASP: Insecure Communication](https://owasp.org/www-project-top-ten/)\n"               
               },              
-              "helpUri": "https://owasp.org/www-project-mobile-top-10/2023-risks/m5-insecure-communication.html",
+              "help": {
+                "text": "### Recommendation\nAvoid logging sensitive information such as credentials, tokens, or personal user data. Use `Log.isLoggable()` to control logging levels in production builds.\n\n### Example (Vulnerable Code)\n```java\nLog.d(\"DEBUG\", \"User password: \" + password);\n```\n\n### Fixed Code\n```java\nif (Log.isLoggable(\"DEBUG\", Log.DEBUG)) {\n    Log.d(\"DEBUG\", \"User attempted login\");\n}\n```\n\n### References\n- [Android Developers: Log](https://developer.android.com/reference/android/util/Log)\n- [OWASP Mobile Top 10: Insecure Logging](https://owasp.org/www-project-mobile-top-10/)\n\n### Evidence\n-```{evidence}```"
+              },                            
               "properties": {
                 "security-severity": "7.5",
                 "precision": "high",
-                "tags": ["security", "external/cwe/cwe-346"]
+                "tags": ["security", "external/cwe/cwe-346" 
+                , "mobile", "dynamic"]
               }
             }
           ]
         }
       },
+      
       "results": [
         {
-          "ruleId": "mobile/missing-root-detection",
+          "ruleId": "android/missing-root-detection", 
           "message": {
-            "text": "This message event handler does not check 'event.origin'."
+            "text": "This message event handler does not check 'event.origin'." 
           },
           "level":"error",
           "locations": [

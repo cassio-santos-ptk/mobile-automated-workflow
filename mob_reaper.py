@@ -6,7 +6,6 @@ from apps.andro_goat import mapping as androgoat_app
 from service.log_service import log_splash
 from service import vulnerability_service as vuln_service
 from config import shared
-
 from dotenv import load_dotenv
 import os
 
@@ -42,30 +41,29 @@ def open_app():
     do_open(PACKAGE_NAME)        
 
     #check for root detection
-    vuln_service.check_root(PACKAGE_NAME)
+    #vuln_service.check_root(PACKAGE_NAME)
 
     #check for emulator detection
-    vuln_service.check_emulator(PACKAGE_NAME)
+    #vuln_service.check_emulator(PACKAGE_NAME)
 
-    androgoat_app.login_shared_pref_1()
+    #androgoat_app.login_shared_pref_1()
 
     #@todo check if sensitive data are stored on shared pref
 
-    do_restart(PACKAGE_NAME)
+    #do_restart(PACKAGE_NAME)
 
-    androgoat_app.login_sqlite()
+    #androgoat_app.login_sqlite()
 
     #@todo check if sensitive data are stored on sqlite
 
-    do_restart(PACKAGE_NAME)
+    #do_restart(PACKAGE_NAME)
 
     androgoat_app.login_insecure_logging()
-
-    #search for sensitive logfed information - user
-    vuln_service.search_sensitive_log(shared.mock_data['username'])
-
+        
     #search for sensitive logfed information - password
     vuln_service.search_sensitive_log(shared.mock_data['password']) 
+
+    vuln_service.build_report()
 
     #@todo check the apk signature
 
@@ -74,7 +72,7 @@ def open_app():
     #@todo look to manifest common issues
 
 def main():
-    #open_app()
-    print("skipin this for a while ..")
+    open_app()
+    #print("skipin this for a while ..")
     
 main()
