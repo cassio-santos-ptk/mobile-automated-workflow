@@ -63,13 +63,14 @@ def open_app():
     #search for sensitive logfed information - password
     vuln_service.search_sensitive_log(shared.mock_data['password']) 
 
-    vuln_service.build_report()
-
     #@todo check the apk signature
 
     #@todo check the min sdk
 
     #@todo look to manifest common issues
+
+    # Create the .sarif file
+    vuln_service.build_report()
 
 def main():
     open_app()
