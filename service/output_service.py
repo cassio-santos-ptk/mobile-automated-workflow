@@ -24,7 +24,7 @@ def get_sarif_structure():
 def build_output(rules, vulnerabilities):    
     sarif_base = get_sarif_structure()
 
-    sarif_base['runs'][0]['tool']['rules'] = rules
+    sarif_base['runs'][0]['tool']['driver']['rules'] = rules
     sarif_base['runs'][0]['results'] = vulnerabilities
 
     print(json.dumps(sarif_base, indent=4))
