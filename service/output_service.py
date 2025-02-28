@@ -28,4 +28,4 @@ def build_output(rules, vulnerabilities):
     sarif_base['runs'][0]['results'] = vulnerabilities    
 
     with open("results.sarif", "w") as sarif_file:
-        json.dumps(sarif_base, sarif_file, indent=4)
+        json.dump(sarif_base, sarif_file, indent=4)
