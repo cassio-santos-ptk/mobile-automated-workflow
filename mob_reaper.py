@@ -41,7 +41,7 @@ def open_app():
     do_open(PACKAGE_NAME)        
 
     #check for root detection
-    #vuln_service.check_root(PACKAGE_NAME)
+    vuln_service.check_root(PACKAGE_NAME)
 
     #check for emulator detection
     #vuln_service.check_emulator(PACKAGE_NAME)
@@ -58,10 +58,10 @@ def open_app():
 
     #do_restart(PACKAGE_NAME)
 
-    androgoat_app.login_insecure_logging()
+    #androgoat_app.login_insecure_logging()
         
     #search for sensitive logfed information - password
-    vuln_service.search_sensitive_log(shared.mock_data['password']) 
+    #vuln_service.search_sensitive_log(shared.mock_data['password']) 
 
     #@todo check the apk signature
 
