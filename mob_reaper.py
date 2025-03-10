@@ -48,7 +48,7 @@ def open_app():
 
     androgoat_app.login_shared_pref_1()
 
-    vuln_service.search_shared_pref(shared.mock_data['password'])
+    vuln_service.search_shared_pref(shared.mock_data['password'], PACKAGE_NAME)
 
     #@todo check if sensitive data are stored on shared pref
 
