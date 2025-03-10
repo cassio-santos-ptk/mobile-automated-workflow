@@ -58,7 +58,7 @@ def open_app():
 
     #do_restart(PACKAGE_NAME)
 
-    #androgoat_app.login_insecure_logging()
+    androgoat_app.login_insecure_logging()
         
     #search for sensitive logfed information - password
     #vuln_service.search_sensitive_log(shared.mock_data['password']) 
