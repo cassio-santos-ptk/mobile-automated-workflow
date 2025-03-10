@@ -61,7 +61,7 @@ def open_app():
     androgoat_app.login_insecure_logging()
         
     #search for sensitive logfed information - password
-    #vuln_service.search_sensitive_log(shared.mock_data['password']) 
+    vuln_service.search_sensitive_log(shared.mock_data['password']) 
 
     #@todo check the apk signature
 
