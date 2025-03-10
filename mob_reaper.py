@@ -44,9 +44,11 @@ def open_app():
     #vuln_service.check_root(PACKAGE_NAME)
 
     #check for emulator detection
-    vuln_service.check_emulator(PACKAGE_NAME)
+    #vuln_service.check_emulator(PACKAGE_NAME)
 
-    #androgoat_app.login_shared_pref_1()
+    androgoat_app.login_shared_pref_1()
+
+    vuln_service.search_shared_pref(shared.mock_data['password'])
 
     #@todo check if sensitive data are stored on shared pref
 
