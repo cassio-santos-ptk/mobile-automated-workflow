@@ -41,18 +41,15 @@ def open_app():
     do_open(PACKAGE_NAME)        
 
     #check for root detection
-    #vuln_service.check_root(PACKAGE_NAME)
+    vuln_service.check_root(PACKAGE_NAME)
 
     #check for emulator detection
-    #vuln_service.check_emulator(PACKAGE_NAME)
+    vuln_service.check_emulator(PACKAGE_NAME)
 
     androgoat_app.login_shared_pref_1()
-
     vuln_service.search_shared_pref(shared.mock_data['password'], PACKAGE_NAME)
 
-    #@todo check if sensitive data are stored on shared pref
-
-    #do_restart(PACKAGE_NAME)
+    do_restart(PACKAGE_NAME)
 
     #androgoat_app.login_sqlite()
 
@@ -60,16 +57,16 @@ def open_app():
 
     #do_restart(PACKAGE_NAME)
 
-    #androgoat_app.login_insecure_logging()
-        
-    #search for sensitive logfed information - password
-    #vuln_service.search_sensitive_log(shared.mock_data['password']) 
+    androgoat_app.login_insecure_logging()        
+    vuln_service.search_sensitive_log(shared.mock_data['password']) 
 
     #@todo check the apk signature
 
     #@todo check the min sdk
 
     #@todo look to manifest common issues
+
+    #@todo check SSL pinning
 
     # Create the .sarif file
     vuln_service.build_report()
