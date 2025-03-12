@@ -14,6 +14,8 @@ def execute_command(command):
         #@todo handle error
         if error:
             print(f"[-] Error while executing command {command}")
+
+        print(output)
                       
         return output
             
