@@ -53,7 +53,7 @@ def open_app():
 
     androgoat_app.login_sqlite()
 
-    vuln_service.search_sqlite(shared.mock_data['username'])
+    vuln_service.search_sqlite(shared.mock_data['username'], PACKAGE_NAME)
 
     #@todo check if sensitive data are stored on sqlite
 
