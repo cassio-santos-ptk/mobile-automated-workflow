@@ -32,7 +32,7 @@ def open_app():
 
     check_device()
 
-    #@todo 0 add an env file with all the known apps and relate them with the folder, providing more abstraction
+    #@todo add an env file with all the known apps and relate them with the folder, providing more abstraction
     
     log_splash()
     print(f"[+] Initiating tests on: {PACKAGE_NAME}")
@@ -41,24 +41,26 @@ def open_app():
     do_open(PACKAGE_NAME)        
 
     #check for root detection
-    vuln_service.check_root(PACKAGE_NAME)
+    #vuln_service.check_root(PACKAGE_NAME)
 
     #check for emulator detection
-    vuln_service.check_emulator(PACKAGE_NAME)
+    #vuln_service.check_emulator(PACKAGE_NAME)
 
-    androgoat_app.login_shared_pref_1()
-    vuln_service.search_shared_pref(shared.mock_data['password'], PACKAGE_NAME)
+    #androgoat_app.login_shared_pref_1()
+    #vuln_service.search_shared_pref(shared.mock_data['password'], PACKAGE_NAME)
 
-    do_restart(PACKAGE_NAME)
+    #do_restart(PACKAGE_NAME)
 
-    #androgoat_app.login_sqlite()
+    androgoat_app.login_sqlite()
+
+    vuln_service.search_sqlite(shared.mock_data['username'])
 
     #@todo check if sensitive data are stored on sqlite
 
     #do_restart(PACKAGE_NAME)
 
-    androgoat_app.login_insecure_logging()        
-    vuln_service.search_sensitive_log(shared.mock_data['password']) 
+    #androgoat_app.login_insecure_logging()        
+    #vuln_service.search_sensitive_log(shared.mock_data['password']) 
 
     #@todo check the apk signature
 
