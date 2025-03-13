@@ -1,5 +1,15 @@
 import sqlite3
 
+def search_for(table, cursor):
+    #check to prevent sql injection
+    if not table.isidentifier():
+        raise ValueError("Invalid table name")
+
+    query = f"SELECT * FROM {table};"  
+
+    cursor.execute(query)  
+    return cursor.fetchall()
+
 def search_for_data(path, sensitive_data):
     try:
         conn = sqlite3.connect(path)
@@ -10,8 +20,11 @@ def search_for_data(path, sensitive_data):
 
         if tables:
             print("Tables in the db")
-            for tb in tables:
-                print(tb[0])
+            for tb in tables:               
+                tb_name = tb[0]
+                content = search_for(tb_name, cursor)
+                print(" ---- content")
+                print(content)
         else:
             print("No tables found in the db")
 
