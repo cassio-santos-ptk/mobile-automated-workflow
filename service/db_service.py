@@ -30,8 +30,10 @@ def search_for_data(path, sensitive_data):
                 tb_name = tb[0]
                 content = search_for(tb_name, cursor)
                 if content:
-                    if has_sensitive_data(content, sensitive_data):                        
-                        return True, content                                
+                    if has_sensitive_data(content, sensitive_data):
+                        # format the evidence in a pretty format for github
+                        evidence = f"// SELECT * FROM {tb_name}\n\n{content}"                       
+                        return True, evidence                                
         else:
             print("No tables found in the db")
 
