@@ -59,6 +59,9 @@ def login_sd_card():
 
     # ------ insecure logging ------
 def login_insecure_logging():
+
+    print(MOCK_USR)
+    print(MOCK_PASWD)
     #select data storage
     do_tap(369, 1022)
     #select insecure logging
