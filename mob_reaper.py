@@ -5,76 +5,77 @@ from service.input_service import execute_command, do_restart, do_open
 from apps.andro_goat import mapping as androgoat_app
 from service.log_service import log_splash
 from service import vulnerability_service as vuln_service
-from config import shared
 from dotenv import load_dotenv
 import os
 
-# Load the .env file
+# -    load the .env file   -
 load_dotenv()
 
 PACKAGE_NAME = os.getenv("PACKAGE_NAME")
-retry  = 0
 
+#
+# -    CHECK IF THERES DEVICES CONNECTED   -
+#
+def check_device():    
+    devices = execute_command("adb devices")  
+    if not has_device(devices):
+        print("[-] Mobile Device is not connected")
+        sys.exit()    
 
 def has_device(devices):
     dvc = "device"
     matches = re.findall(dvc, devices)
     return len(matches) > 1
 
-def check_device():    
-    #check the devices connected by adb
-    devices = execute_command("adb devices")  
-    if not has_device(devices):
-        print("[-] Mobile Device is not connected")
-        sys.exit()    
+def do_test():
 
-def open_app():
+    # -     DEFINE THE MOCK DATA    -
+    MOCK_USR = os.getenv("MOCK_USER_NAME")
+    MOCK_PASWD = os.getenv("MOCK_PASSWORD")
 
     check_device()
 
-    #@todo add an env file with all the known apps and relate them with the folder, providing more abstraction
-    
-    log_splash()
     print(f"[+] Initiating tests on: {PACKAGE_NAME}")
     
-    #open the app
+    # -     OPEN THE APP     -
     do_open(PACKAGE_NAME)        
 
-    #check for root detection
     #vuln_service.check_root(PACKAGE_NAME)
 
-    #check for emulator detection
     #vuln_service.check_emulator(PACKAGE_NAME)
 
+    # -     PERFORM THE SHARED PREFERENCES FLOW     -
     #androgoat_app.login_shared_pref_1()
-    #vuln_service.search_shared_pref(shared.mock_data['password'], PACKAGE_NAME)
+
+    # -     LOOK TO SENSITIVE DATA ON SHARED PREF       -
+    #vuln_service.search_shared_pref(MOCK_PASWD, PACKAGE_NAME)
+
+    # -     RESTART THE APP      -
+    #do_restart(PACKAGE_NAME)
+
+    # -     PERFORM THE SQLITE FLOW
+    #androgoat_app.login_sqlite()
+
+    # -     LOOK TO SENSITIVE DATA ON SQLITE
+    #vuln_service.search_sqlite(MOCK_USR, PACKAGE_NAME)
 
     #do_restart(PACKAGE_NAME)
 
-    androgoat_app.login_sqlite()
+    # -     PERFORM THE LOGGING FLOW 
+    androgoat_app.login_insecure_logging()    
 
-    vuln_service.search_sqlite(shared.mock_data['username'], PACKAGE_NAME)
+    # -     LOOK TO SENSITIVE DATA ON LOGS    
+    vuln_service.search_sensitive_log(MOCK_USR) 
+    vuln_service.search_sensitive_log(MOCK_PASWD)         
 
-    #@todo check if sensitive data are stored on sqlite
+    #@todo check SSL pinning - use burp
+    #@todo integrate with burp
 
-    #do_restart(PACKAGE_NAME)
-
-    #androgoat_app.login_insecure_logging()        
-    #vuln_service.search_sensitive_log(shared.mock_data['password']) 
-
-    #@todo check the apk signature
-
-    #@todo check the min sdk
-
-    #@todo look to manifest common issues
-
-    #@todo check SSL pinning
-
-    # Create the .sarif file
+    # -     CREATE THE .SARIF REPORT FILE
     vuln_service.build_report()
 
 def main():
-    open_app()
-    #print("skipin this for a while ..")
+    log_splash()
+    do_test()
     
 main()

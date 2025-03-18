@@ -20,7 +20,6 @@ def search_for_data(path, sensitive_data):
     try:
         conn = sqlite3.connect(path)
         cursor = conn.cursor()
-
         # search for all the tables in de db
         cursor.execute("SELECT name FROM sqlite_master WHERE type='table';")
         tables = cursor.fetchall()
@@ -28,6 +27,7 @@ def search_for_data(path, sensitive_data):
         if tables:
             for tb in tables:               
                 tb_name = tb[0]
+                # select the content of the table
                 content = search_for(tb_name, cursor)
                 if content:
                     if has_sensitive_data(content, sensitive_data):

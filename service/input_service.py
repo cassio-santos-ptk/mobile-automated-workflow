@@ -3,6 +3,13 @@ import subprocess
 import time
 import sys
 
+"""
+
+This file centralizes all the inputs and actions used to
+intaract with the mobile device.
+
+"""
+
 DAEMON = "daemon not running"
 
 def execute_command(command):
@@ -11,9 +18,8 @@ def execute_command(command):
 
         output, error = process.communicate()
 
-        #@todo handle error
         if error:
-            print(f"[-] Error while executing command {command}")     
+            print(f"[-] Error while executing command {command} - output: {error}")     
                       
         return output
             
@@ -21,11 +27,12 @@ def execute_command(command):
         print(f"Error executing command: {e}")
         print("Error Output:", e.stderr)
 
-
+# -     PERFORM A TAP ON THE DEVICE BASED ON X AND Y CORDINADES     -
 def do_tap(x, y):    
     execute_command(f"adb shell input tap {x} {y}")
     do_sleep(4)
 
+# -     SENT INPUT TEXT TO TEXT FIELDS     -
 def do_input_text(data):        
     execute_command(f"adb shell input text {data}")
 

@@ -1,5 +1,12 @@
 import json
 
+""""
+
+  File responsible to build and create and manage the output
+  data released to the Github actions.
+
+"""
+
 def get_sarif_structure():
     sarif_data = {
         "version": "2.1.0",

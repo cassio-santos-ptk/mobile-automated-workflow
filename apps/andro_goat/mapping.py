@@ -1,6 +1,14 @@
 from service.input_service import do_tap, do_input_text
 from config import shared
 
+
+""""
+
+   Application: Androgoat
+   This file maps the relevant flows of the application
+
+"""
+
 # ------ first shared preferences login activity ------
 def login_shared_pref_1():
     #select data storage
