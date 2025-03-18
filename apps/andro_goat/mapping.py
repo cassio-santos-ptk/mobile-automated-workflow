@@ -1,6 +1,9 @@
 from service.input_service import do_tap, do_input_text
-from config import shared
+import os
 
+# -     DEFINE THE MOCK DATA    -
+MOCK_USR = os.getenv("MOCK_USER_NAME")
+MOCK_PASWD = os.getenv("MOCK_PASSWORD")
 
 """"
 
@@ -16,11 +19,11 @@ def login_shared_pref_1():
     #select fisrt option
     do_tap(382, 509)
     # type user
-    do_input_text(shared.mock_data['username'])
+    do_input_text(MOCK_USR)
     # tap pass
     do_tap(372, 601)
     # type pass
-    do_input_text(shared.mock_data['password'])
+    do_input_text(MOCK_PASWD)
     # tap save
     do_tap(391, 703)
 
@@ -31,11 +34,11 @@ def login_sqlite():
     #select sqlite
     do_tap(377, 715)
     # type user
-    do_input_text(shared.mock_data['username'])
+    do_input_text(MOCK_USR)
     # tap pass
     do_tap(372, 601)
     # type pass
-    do_input_text(shared.mock_data['password'])
+    do_input_text(MOCK_PASWD)
     # tap save
     do_tap(391, 703)
 
@@ -46,11 +49,11 @@ def login_sd_card():
     #select sdcard
     do_tap(382, 950)
     # type user
-    do_input_text(shared.mock_data['username'])
+    do_input_text(MOCK_USR)
     # tap pass
     do_tap(372, 601)
     # type pass
-    do_input_text(shared.mock_data['password'])
+    do_input_text(MOCK_PASWD)
     # tap save
     do_tap(391, 703)
 
@@ -61,10 +64,10 @@ def login_insecure_logging():
     #select insecure logging
     do_tap(382, 471)
     # type user
-    do_input_text(shared.mock_data['username'])
+    do_input_text(MOCK_USR)
     # tap pass
     do_tap(372, 601)
     # type pass
-    do_input_text(shared.mock_data['password'])
+    do_input_text(MOCK_PASWD)
     # tap save
     do_tap(391, 703)
