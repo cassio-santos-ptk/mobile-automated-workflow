@@ -65,7 +65,7 @@ def do_test():
     androgoat_app.login_insecure_logging()    
 
     # -     LOOK TO SENSITIVE DATA ON LOGS
-    print(MOCK_PASWD)
+ 
     vuln_service.search_sensitive_log(MOCK_USR) 
     vuln_service.search_sensitive_log(MOCK_PASWD)         
 

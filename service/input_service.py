@@ -20,6 +20,9 @@ def execute_command(command):
 
         if error:
             print(f"[-] Error while executing command {command} - output: {error}")     
+
+
+        print(output)
                       
         return output
             
