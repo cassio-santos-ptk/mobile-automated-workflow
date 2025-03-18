@@ -1,5 +1,9 @@
 from service.input_service import do_tap, do_input_text
+from dotenv import load_dotenv
 import os
+
+# -    load the .env file   -
+load_dotenv()
 
 # -     DEFINE THE MOCK DATA    -
 MOCK_USR = os.getenv("MOCK_USER_NAME")
@@ -60,8 +64,6 @@ def login_sd_card():
     # ------ insecure logging ------
 def login_insecure_logging():
 
-    print(MOCK_USR)
-    print(MOCK_PASWD)
     #select data storage
     do_tap(369, 1022)
     #select insecure logging

@@ -66,8 +66,8 @@ def do_test():
 
     # -     LOOK TO SENSITIVE DATA ON LOGS
  
-    vuln_service.search_sensitive_log(MOCK_USR) 
-    vuln_service.search_sensitive_log(MOCK_PASWD)         
+    vuln_service.search_sensitive_log(MOCK_USR)
+    vuln_service.search_sensitive_log(MOCK_PASWD)        
 
     #@todo check SSL pinning - use burp
     #@todo integrate with burp
