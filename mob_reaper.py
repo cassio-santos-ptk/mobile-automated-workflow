@@ -23,7 +23,7 @@ def do_test():
 
     match PACKAGE_NAME:
         case "owasp.sat.agoat":
-            androgoat.do_test()
+            androgoat.do_test(PACKAGE_NAME)
         case _:
             print(f"[-] Error: The application is not mapped: {PACKAGE_NAME}")        
 

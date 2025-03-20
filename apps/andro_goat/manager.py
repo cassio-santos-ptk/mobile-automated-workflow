@@ -50,7 +50,6 @@ def do_test(package):
     vuln_service.search_sensitive_log(MOCK_PASWD)        
 
     #@todo check SSL pinning - use burp
-    #@todo integrate with burp
 
     # -     Create the .sarif File Report
     vuln_service.build_report()
