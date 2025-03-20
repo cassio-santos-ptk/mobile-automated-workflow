@@ -1,7 +1,11 @@
 import sqlite3
 
+"""
+    File that concentrate all the Database-related operations.
+"""
+
 def search_for(table, cursor):
-    #check to prevent sql injection
+    # -     Check to prevent sql injection
     if not table.isidentifier():
         raise ValueError("Invalid table name")
 
@@ -11,7 +15,7 @@ def search_for(table, cursor):
     return cursor.fetchall()
 
 def has_sensitive_data(data, sensitive_data):
-    # converts the db data to string and search for sensitive data
+    # -     Converts the db data to string and search for sensitive data
     data_str = " ".join(map(str, data))
 
     return sensitive_data in data_str
@@ -20,18 +24,18 @@ def search_for_data(path, sensitive_data):
     try:
         conn = sqlite3.connect(path)
         cursor = conn.cursor()
-        # search for all the tables in de db
+        # -     Search for all the tables structure in the database
         cursor.execute("SELECT name FROM sqlite_master WHERE type='table';")
         tables = cursor.fetchall()
 
         if tables:
             for tb in tables:               
                 tb_name = tb[0]
-                # select the content of the table
+                # -     Search for the content of the table
                 content = search_for(tb_name, cursor)
                 if content:
                     if has_sensitive_data(content, sensitive_data):
-                        # format the evidence in a pretty format for github
+                        # -     Format the evidence for github actions
                         evidence = f"// SELECT * FROM {tb_name}\n\n{content}"                       
                         return True, evidence                                
         else:
@@ -44,6 +48,6 @@ def search_for_data(path, sensitive_data):
         print(f"Unexpected error: {e}")
 
     finally:
-        # Ensure the connection is closed properly
+        # -     Ensure the connection is closed properly
         if 'conn' in locals():
             conn.close()

@@ -1,6 +1,3 @@
-from colorama import Fore, Style, init
-
-init()
 
 splash_name = r"""#  _   .-')                 .-. .-')      _  .-')      ('-.      ('-.        _ (`-.     ('-.    _  .-') #
 # ( '.( OO )_               \  ( OO )    ( \( -O )   _(  OO)    ( OO ).-.   ( (OO  )  _(  OO)  ( \( -O ) #

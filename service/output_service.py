@@ -3,7 +3,7 @@ import json
 """"
 
   File responsible to build and create and manage the output
-  data released to the Github actions.
+  data released to the Github actions as artifact output.
 
 """
 

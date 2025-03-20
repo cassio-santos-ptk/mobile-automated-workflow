@@ -10,8 +10,6 @@ intaract with the mobile device.
 
 """
 
-DAEMON = "daemon not running"
-
 def execute_command(command):
     try:                 
         process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE ,stderr=subprocess.PIPE, text=True)             
@@ -27,12 +25,13 @@ def execute_command(command):
         print(f"Error executing command: {e}")
         print("Error Output:", e.stderr)
 
-# -     PERFORM A TAP ON THE DEVICE BASED ON X AND Y CORDINADES     -
+
+# -     Perform a Tap on the Device Based on X and Y Coordinades    -
 def do_tap(x, y):    
     execute_command(f"adb shell input tap {x} {y}")
     do_sleep(4)
 
-# -     SENT INPUT TEXT TO TEXT FIELDS     -
+# -     Send input text to text fields     -
 def do_input_text(data):        
     execute_command(f"adb shell input text {data}")
 
