@@ -23,6 +23,7 @@ def do_test():
 
     helper.check_device()
     helper.set_proxy(PROXY_HOST, PROXY_PORT)
+    
     print(f"[+] Initiating tests on: {PACKAGE_NAME}")
 
     match PACKAGE_NAME:
@@ -31,7 +32,7 @@ def do_test():
         case "com.va.lottery.uat":
             vallotery.do_test(PACKAGE_NAME)
         case _:
-            print(f"[-] Error: The application is not mapped: {PACKAGE_NAME}")        
+            print(f"[-] Error: This application is not mapped: {PACKAGE_NAME}")        
 
 def main():
     log_splash()
