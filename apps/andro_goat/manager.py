@@ -1,5 +1,5 @@
 from dotenv import load_dotenv
-from service.input_service import do_restart, do_open
+from service.input_service import do_restart, do_open, do_close
 from service import vulnerability_service as vuln_service
 from apps.andro_goat import mapping as androgoat
 import os
@@ -53,4 +53,6 @@ def do_test(package):
 
     # -     Create the .sarif File Report
     vuln_service.build_report()
+
+    do_close(package)
 
