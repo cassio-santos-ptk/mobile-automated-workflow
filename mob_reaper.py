@@ -15,11 +15,14 @@ import os
 # -    load the .env file   -
 load_dotenv()
 
+PROXY_HOST = os.getenv("PROXY_HOST")
+PROXY_PORT = os.getenv("PROXY_PORT")
 PACKAGE_NAME = os.getenv("PACKAGE_NAME")
 
 def do_test():
 
     helper.check_device()
+    helper.set_proxy(PROXY_HOST, PROXY_PORT)
     print(f"[+] Initiating tests on: {PACKAGE_NAME}")
 
     match PACKAGE_NAME:
