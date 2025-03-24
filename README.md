@@ -1,4 +1,4 @@
-<img src="assets/logo.webp" width="80" alt="logo" style="margin:40px auto; display: block">
+<img src="assets/logo.webp" width="80" alt="logo" style="margin:40px auto; display: block"> <div>some text</div>
 
 # MobReaper: Runtime Mobile Application Test Suite
 
