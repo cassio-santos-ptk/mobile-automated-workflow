@@ -7,9 +7,7 @@
 
 ![Screenshot](assets/screenshot.png)
 
-## Get Started
-
-## Dependencies
+## Get Started - Dependencies
 
 ### Python
 MobReaper requires [Python](https://www.python.org/) to be installed.
