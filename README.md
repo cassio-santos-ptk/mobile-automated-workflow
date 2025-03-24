@@ -44,4 +44,4 @@ It is recommendaded but no required that you have Burp Suite Pro up and running 
 * [Android Config](https://portswigger.net/burp/documentation/desktop/mobile/config-android-device)
 
 Once configured the burp certificate in the device, keep it ready while the tests are made, the proxy will be set by default to `10.0.3.2` on port `8082`,
-to change it, set directly on `**.env**` file
+to change it, set directly on ` .env ` file
