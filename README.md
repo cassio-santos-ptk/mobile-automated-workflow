@@ -1,11 +1,6 @@
-<div style="display: flex; align-items: center;width:300">
-  <img src="assets/logo.webp" width="40" style="margin-right: 10px;">
-  <span style="margin-bottom:50%; display: block;"><strong>This is some text next to the image.</strong></span>
-</div>
+<img src="assets/logo.webp" width="80" alt="logo" style="margin:40px auto; display: block"> <div>some text</div>
 
 # MobReaper: Runtime Mobile Application Test Suite
-
-<!-- style="margin:40px auto; display: block" -->
 
 [![Commits](https://img.shields.io/github/commit-activity/w/chichou/grapefruit?label=Commits)](https://github.com/cassio-santos-ptk/mobile-automated-workflow/commits/main/)
 [![contributers](https://img.shields.io/github/contributors/chichou/grapefruit)](https://github.com/cassio-santos-ptk/mobile-automated-workflow/graphs/contributors)
