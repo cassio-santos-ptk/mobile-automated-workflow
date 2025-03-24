@@ -9,8 +9,7 @@
 
 ## Get Started
 
-### Dependencies
-
+## Dependencies
 
 ### Python
 Grapefruit requires [Python](https://www.python.org/) to be installed.
@@ -18,30 +17,20 @@ Grapefruit requires [Python](https://www.python.org/) to be installed.
 ### Genymotion
 Setup genymotion on your device: https://www.genymotion.com/product-desktop/download/
 
-> Start `Cydia` and add Frida’s repository by going to `Manage` -> `Sources` -> `Edit` -> `Add` and enter `https://build.frida.re`. You should now be able to find and install the `Frida` package which lets Frida inject JavaScript into apps running on your iOS device. This happens over USB, so you will need to have your USB cable handy, though there’s no need to plug it in just yet.
+At this moment, the key recommended device definitions are:
 
-### Setup
+- Android Version: 11.0
+- Architecture: arm64
 
-Grapefruit is now on npm as [igf](https://www.npmjs.com/package/igf)! Interprets as iGrapefruit or maybe iOS Graphical Frida
+### Rooted Device
 
-`npm install -g igf`
+It is highly recommended to run on a rooted device. Not achieving this can affect the results of the tests
 
-Now you have the grapefruit cli as `igf`:
+### Local Action Runner
 
-```
-~ igf --help
+To run in github Actions environment, it is needed to configure a Local Self-hosted runner on youe machine.
 
-Usage: igf [options]
-
-Options:
-  -h, --host <string>  hostname (default: "127.0.0.1")
-  -p, --port <number>  port of the server side (default: 31337)
-  --help               display help for command
-```
-
-Default URL for the web UI is `http://localhost:31337`
-
-*Security Warning*
+To settup, follow the Github [Doc] (https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/about-self-hosted-runners)
 
 At this moment, grapefruit has no authentication. It's possible to use it to inject arbitrary code to your iPhone for anyone that has the access to the web UI. Please limit it to `localhost` as much as possible. Contribution welcomed.
 
