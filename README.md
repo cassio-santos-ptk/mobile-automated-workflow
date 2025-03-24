@@ -1,6 +1,4 @@
-<img src="assets/logo.webp" width="100" alt="logo" style="margin:40px auto; display: block">
-
-# MobReaper: Runtime Mobile Application Test Suite
+<img src="assets/logo.webp" width="100" alt="logo" style="margin:40px auto; display: block"># MobReaper: Runtime Mobile Application Test Suite
 
 [![Commits](https://img.shields.io/github/commit-activity/w/chichou/grapefruit?label=Commits)](https://github.com/cassio-santos-ptk/mobile-automated-workflow/commits/main/)
 [![contributers](https://img.shields.io/github/contributors/chichou/grapefruit)](https://github.com/cassio-santos-ptk/mobile-automated-workflow/graphs/contributors)
