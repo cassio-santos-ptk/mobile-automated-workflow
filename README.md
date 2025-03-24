@@ -1,6 +1,6 @@
 <div style="display: flex; align-items: center;width:300">
   <img src="assets/logo.webp" width="40" style="margin-right: 10px;">
-  <span style="margin-bottom: 10px; display: block;"><strong>This is some text next to the image.</strong></span>
+  <span style="margin-bottom: 40px; display: block;"><strong>This is some text next to the image.</strong></span>
 </div>
 
 # MobReaper: Runtime Mobile Application Test Suite
