@@ -28,22 +28,22 @@ It is highly recommended to run on a **rooted** device. Not achieving this can a
 
 ### Android Debug Bridge
 
-ADB is **required**. Ensure that it is properly configure in the local machine (adb)[https://developer.android.com/tools/adb]
+ADB is **required**. Ensure that it is properly configure in the local machine [adb](https://developer.android.com/tools/adb)
 
 ### Local Action Runner
 
-To run in github Actions environment, it is needed to configure a Local Self-hosted runner on youe machine.
+To run in github Actions environment, it is needed to configure a Local Self-hosted runner on your machine.
 
 To settup, follow the Github [Doc](https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/about-self-hosted-runners)
 
-Make sure the Local running is up and listening for jobs before start the workflow
+Make sure the Local runner is up and listening for jobs before start the workflow.
 
 ## (Additional) Burp Suite
 
-It is recommendaded but no required that you have Burp Suite Pro up and running in order to get WEB vulnerabilities
+It is recommendaded but no required that you have Burp Suite Pro up and running in order to get the WEB vulnerabilities
 
 * [PortSwigger](https://portswigger.net/burp)
 * [Android Config](https://portswigger.net/burp/documentation/desktop/mobile/config-android-device)
 
-Once configured the burp certificate in the device, keep it open while the tests are made, the proxy will be set by default to `10.0.3.2` on port `8082`
-to change it, set directly on **.env** file
+Once configured the burp certificate in the device, keep it ready while the tests are made, the proxy will be set by default to `10.0.3.2` on port `8082`,
+to change it, set directly on `**.env**` file
