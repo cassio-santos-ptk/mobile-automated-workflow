@@ -38,10 +38,10 @@ Make sure the Local runner is up and listening for jobs before start the workflo
 
 ## (Additional) Burp Suite
 
-It is recommendaded but no required that you have Burp Suite Pro up and running in order to get the WEB vulnerabilities
+It is recommendaded but no required that you have Burp Suite Pro up and running in order to scan for WEB vulnerabilities
 
 * [PortSwigger](https://portswigger.net/burp)
 * [Android Config](https://portswigger.net/burp/documentation/desktop/mobile/config-android-device)
 
-Once configured the burp certificate in the device, keep it ready while the tests are made, the proxy will be set by default to `10.0.3.2` on port `8082`,
+Once the burp certificate is configured in the device, keep it ready while the tests are performed, the proxy will be set by default to `10.0.3.2` on port `8082`,
 to change it, set directly on ` .env ` file
