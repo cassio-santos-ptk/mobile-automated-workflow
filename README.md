@@ -12,7 +12,7 @@
 ## Dependencies
 
 ### Python
-Grapefruit requires [Python](https://www.python.org/) to be installed.
+MobReaper requires [Python](https://www.python.org/) to be installed.
 
 ### Genymotion
 Setup genymotion on your device: https://www.genymotion.com/product-desktop/download/
@@ -24,20 +24,26 @@ At this moment, the key recommended device definitions are:
 
 ### Rooted Device
 
-It is highly recommended to run on a rooted device. Not achieving this can affect the results of the tests
+It is highly recommended to run on a **rooted** device. Not achieving this can affect the results of the tests
+
+### Android Debug Bridge
+
+ADB is **required**. Ensure that it is properly configure in the local machine (adb)[https://developer.android.com/tools/adb]
 
 ### Local Action Runner
 
 To run in github Actions environment, it is needed to configure a Local Self-hosted runner on youe machine.
 
-To settup, follow the Github [Doc] (https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/about-self-hosted-runners)
+To settup, follow the Github [Doc](https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/about-self-hosted-runners)
 
-At this moment, grapefruit has no authentication. It's possible to use it to inject arbitrary code to your iPhone for anyone that has the access to the web UI. Please limit it to `localhost` as much as possible. Contribution welcomed.
+Make sure the Local running is up and listening for jobs before start the workflow
 
-* [Development Setup](https://github.com/ChiChou/grapefruit/wiki/Development-Setup)
-* [Troubleshooting](https://github.com/ChiChou/grapefruit/wiki/Trouble-Shooting)
-* [Roadmap](https://github.com/ChiChou/Grapefruit/projects/1)
+## (Additional) Burp Suite
 
-## Discord Group
+It is recommendaded but no required that you have Burp Suite Pro up and running in order to get WEB vulnerabilities
 
-If you have experienced anything wrong or want to suggest new features, please join my Discord channel! https://discord.gg/pwutZNx
+* [PortSwigger](https://portswigger.net/burp)
+* [Android Config](https://portswigger.net/burp/documentation/desktop/mobile/config-android-device)
+
+Once configured the burp certificate in the device, keep it open while the tests are made, the proxy will be set by default to `10.0.3.2` on port `8082`
+to change it, set directly on **.env** file
