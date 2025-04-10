@@ -21,7 +21,7 @@ def login():
     # type accont
     do_input_text(MOCK_USR)
     # type continue
-    do_tap(373, 857)
+    do_tap(397, 907)
     # click input password
     do_tap(385, 473)
     # type password
